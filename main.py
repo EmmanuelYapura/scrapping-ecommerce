@@ -1,4 +1,9 @@
 from scraper.driver import configurar_driver
+from scraper.cookies import aceptar_cookies
+from scraper.buscador import buscar_producto
+from scraper.productos import cargar_productos_con_scroll
+from scraper.info_productos import extraer_info
+from scraper.generador_json import guardar_json
 
 def main():
     url = 'https://www.musimundo.com/'
@@ -6,7 +11,19 @@ def main():
 
     try:
         driver.get(url)
-        input('Presionar una tecla para cerrar navegador...')
+        
+        aceptar_cookies(driver)
+
+        buscar_producto(driver, "televisores")
+
+        productos = cargar_productos_con_scroll(driver, min_productos=40)
+
+        info_productos = extraer_info(productos)
+
+        guardar_json(info_productos)
+
+        print('Productos cargados en archivo productos.json')
+
     except Exception as e:
         print(f'No se puedo obtener la pagina: ', e)
     
