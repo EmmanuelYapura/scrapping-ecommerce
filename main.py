@@ -16,7 +16,7 @@ def main():
 
         buscar_producto(driver, "televisores")
 
-        productos = cargar_productos_con_scroll(driver, min_productos=40)
+        productos = cargar_productos_con_scroll(driver)
 
         info_productos = extraer_info(productos)
 

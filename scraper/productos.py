@@ -19,7 +19,7 @@ def scroll_hasta_elemento(driver, elemento):
     driver.execute_script("arguments[0].scrollIntoView();", elemento)
     time.sleep(4)
 
-# Controla logica del scroll para obtener productos
+# Controla logica del scroll para obtener productos (por defecto 40)
 def cargar_productos_con_scroll(driver, min_productos=40):
     total = obtener_total_productos(driver)
     productos = obtener_productos(driver)
