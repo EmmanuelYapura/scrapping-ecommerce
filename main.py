@@ -4,6 +4,7 @@ from scraper.buscador import buscar_producto
 from scraper.productos import cargar_productos_con_scroll
 from scraper.info_productos import extraer_info
 from scraper.generador_json import guardar_json
+import time
 
 def main():
     url = 'https://www.musimundo.com/'
@@ -11,6 +12,7 @@ def main():
 
     try:
         driver.get(url)
+        time.sleep(2)
         
         aceptar_cookies(driver)
 
